@@ -51,4 +51,16 @@ public class Customer
 			totalAmount += each.getAmount();
 		return totalAmount;
 	}
+
+    public String htmlStatement() {
+        String result = "<h1>Rental Record for <em>" + getName() + "</em></h1><ul>";
+        for (Rental each : _rentals) {
+            result += "<li>" + each.getMovie().getTitle() + ": " + each.getAmount() + "</li>";
+        }
+        result += "</ul>";
+        result += "<p>Amount owed is <strong>" + getTotalAmount() + "</strong></p>";
+        result += "<p>You earned <strong>" + getTotalFrequentRenterPoints() + "</strong> frequent renter points</p>";
+        return result;
+    }
+
 }
